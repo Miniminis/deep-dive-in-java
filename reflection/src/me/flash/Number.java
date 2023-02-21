@@ -11,6 +11,7 @@ public class Number {
 
     public String four = "four";
 
+//    @FlashAnnotation    //@Target({ElementType.METHOD, ElementType.CONSTRUCTOR})
     protected String five = "five";
 
     public Number() { }
@@ -21,6 +22,7 @@ public class Number {
         this.five = five;
     }
 
+    @FlashAnnotation
     private void six() {
         System.out.println(6);
     }

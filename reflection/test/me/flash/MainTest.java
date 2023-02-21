@@ -117,6 +117,37 @@ class MainTest {
         Arrays.stream(MyNumber.class.getAnnotations()).forEach(System.out::println);
     }
 
+    @DisplayName("6-1. 어노테이션 목록 조회하기")
+    @Test
+    void getAnnotationList() {
+        /**
+         * 커스텀 어노테이션은 java code, java byte code (class file)까지도 남아있지만, runtime 까지 남아있지는 않는다.
+         * 그래서 getAnnotations() 에서는 사용자 정의 어노테이션은 조회되지 않는다.
+         * 조회 방법 : @Retention 설정하기
+         * */
+        Arrays.stream(Number.class.getAnnotations()).forEach(System.out::println);
+        //@me.flash.FlashAnnotation()
+    }
+
+    @DisplayName("6-2. @Inherited 상속 클래스에서 상위 클래스 어노테이션 조회")
+    @Test
+    void getSuperClassAnnotation() {
+        Arrays.stream(MyNumber.class.getAnnotations()).forEach(System.out::println);
+        //@me.flash.FlashAnnotation()
+    }
+
+    @DisplayName("6-3. 상속받은 어노테이션까지 조회하기/하지않기")
+    @Test
+    void getAnnotations() {
+        Arrays.stream(MyNumber.class.getAnnotations()).forEach(System.out::println);
+        System.out.println();
+        //@me.flash.FlashAnnotation()
+        //@me.flash.SecondAnnotation()
+
+        Arrays.stream(MyNumber.class.getDeclaredAnnotations()).forEach(System.out::println);
+        //@me.flash.SecondAnnotation()
+    }
+
     @DisplayName("7. 생성자 가져오기")
     @Test
     void getConstructor() {
@@ -124,4 +155,5 @@ class MainTest {
         //public me.flash.Number()
         //public me.flash.Number(java.lang.String,java.lang.String,java.lang.String)
     }
+
 }
