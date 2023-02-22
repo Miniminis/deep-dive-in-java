@@ -8,4 +8,11 @@ public class ProxyUserService implements UserService {
         userService.join(user);
         System.out.println("proxy end");
     }
+
+    @Override
+    public void terminate(User user) {
+        System.out.println("proxy start");
+        userService.terminate(user);
+        System.out.println("proxy end");
+    }
 }
